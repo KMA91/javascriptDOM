@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JS Dom Manipulation</title>
+  </head>
+  <body>
+
+    <h3>A List</h3>
+    <ul id="commentList"></ul>
+    <h4>Add to the above list</h4>
+    <div>
+      <form id="commentForm">
+      <input type='text' id='comment'/>
+      <input type='button' id='resetCommentList' value='Reset List' onclick="resetList()"/>
+      <input type='button' id='postComment' value='Post Comment' onclick="addToList()"/>
+      </form>
+    </div>
+
+    <h4>Change the below Image</h4>
+    <div>
+      <img id="googleLogo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+      <form id="imageForm">
+        <input type="text" id="newImage" placeholder="URL of new image"/>
+        <input type='button' id='resetImage' value="Reset Image" onclick="resetImg()"/>
+        <input type='button' id='postImage' value="Update Image" onclick="updateImage()"/>
+      </form>
+    </div>
+
+  </body>
+  <script type="text/javascript">
+
+
+    function addToList() { // Add comment to the UL
+      var commentList = document.getElementById("commentList")
+          comment = document.getElementById("comment").value;
+      if(comment != ''){
+        let newLi = document.createElement("LI");
+        newLi.innerHTML = comment;
+        commentList.appendChild(newLi);
+        document.getElementById("commentForm").reset();
+      } else {
+        alert("Please add a comment");
+      }
+    }
+
+    function resetList() { // Reset the comment list
+      var commentList = document.getElementById("commentList");
+      if (!commentList.firstChild) {
+        alert("The list is already empty");
+      }
+      while (commentList.firstChild) {
+        commentList.removeChild(commentList.firstChild);
+      }
+    }
+
+    function updateImage() { // Update the image and styling to shrink large images
+      var newImage = document.getElementById("newImage").value;
+      if(newImage != '') {
+        document.getElementById("googleLogo").src = newImage;
+        document.getElementById("googleLogo").style.maxWidth = "200px";
+        document.getElementById("googleLogo").style.maxHeight = "100%";
+        document.getElementById("imageForm").reset();
+      } else {
+        alert("Please add a URL");
+      }
+    }
+
+    function resetImg() { // Reset back to default image
+      if(document.getElementById("googleLogo").src == "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png") {
+        alert("The image is the default image");
+      } else {
+        document.getElementById("googleLogo").src = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+        document.getElementById("googleLogo").style.maxWidth = "100%";
+        document.getElementById("googleLogo").style.maxHeight = "100%";
+      }
+    }
+
+  </script>
+</html>
