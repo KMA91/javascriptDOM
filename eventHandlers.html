@@ -13,14 +13,14 @@
     </div>
     <div>
       <h3>IE 8 Compatible</h3>
-      <p>Note: The intended behavior will only show in IE 8</p>
+      <p>Note: The intended behavior below will only show in IE 8</p>
       <div id="redsquare-2" style="background: red; width: 50px; height: 50px;"></div>
       <button id="changeColor-2" type="button" name="button">Change Color</button>
       <button id="changeColorHover" type="button" name="button">Change Color on Hover</button>
     </div>
   </body>
   <div>
-    <input id="bindEvents" type="text" value="Bind Events">
+    <input id="bindEvents" type="submit" value="Bind Events">
     <button id="unbindEvents" type="button" name="button">Unbind All Events</button>
   </div>
 
@@ -58,6 +58,7 @@
   }
 
   function unbindEvents () {
+    alert("Events have been unbinded.");
     document.getElementById("changeColor-1").removeEventListener("click", changeColor1);
     document.getElementById("changeColorMouse").removeEventListener("mousedown", changeColorHover1);
     document.getElementById("changeColorMouse").removeEventListener("mouseup", changeColorHover1);
@@ -69,7 +70,7 @@
   }
 
   function bindEvents () {
-
+    alert("Events have been binded to the corresponding buttons.")
     document.getElementById("changeColor-1").addEventListener("click", changeColor1);
     document.getElementById("changeColorMouse").addEventListener("mousedown", changeColorHover1);
     document.getElementById("changeColorMouse").addEventListener("mouseup", changeColorHover1);
