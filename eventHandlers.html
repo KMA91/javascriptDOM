@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>IE 9+ Compatible</h3>
+    <div>
+      <div id="redsquare-1" style="background: red; width: 50px; height: 50px;"></div>
+      <input id="changeColor-1" type="submit" value="Change Color">
+      <input id="changeColorMouse" type="submit" value="Change Color on Mouse Down">
+    </div>
+    <div>
+      <h3>IE 8 Compatible</h3>
+      <p>Note: The intended behavior will only show in IE 8</p>
+      <div id="redsquare-2" style="background: red; width: 50px; height: 50px;"></div>
+      <button id="changeColor-2" type="button" name="button">Change Color</button>
+      <button id="changeColorHover" type="button" name="button">Change Color on Hover</button>
+    </div>
+  </body>
+  <div>
+    <input id="bindEvents" type="text" value="Bind Events">
+    <button id="unbindEvents" type="button" name="button">Unbind All Events</button>
+  </div>
+
+<script type="text/javascript">
+  function changeColor1 () {
+    if(document.getElementById("redsquare-1").style.background == "red") {
+      document.getElementById("redsquare-1").style.background = "blue";
+    } else {
+      document.getElementById("redsquare-1").style.background = "red";
+    }
+  }
+
+  function changeColorHover1 () {
+    if(document.getElementById("redsquare-1").style.background == "red") {
+      document.getElementById("redsquare-1").style.background = "blue";
+    } else {
+      document.getElementById("redsquare-1").style.background = "red";
+    }
+  }
+
+  function changeColor2 () {
+    if(document.getElementById("redsquare-2").style.background == "red") {
+      document.getElementById("redsquare-2").style.background = "blue";
+    } else {
+      document.getElementById("redsquare-2").style.background = "red";
+    }
+  }
+
+  function changeColorHover2 () {
+    if(document.getElementById("redsquare-2").style.background == "red") {
+      document.getElementById("redsquare-2").style.background = "blue";
+    } else {
+      document.getElementById("redsquare-2").style.background = "red";
+    }
+  }
+
+  function unbindEvents () {
+    document.getElementById("changeColor-1").removeEventListener("click", changeColor1);
+    document.getElementById("changeColorMouse").removeEventListener("mousedown", changeColorHover1);
+    document.getElementById("changeColorMouse").removeEventListener("mouseup", changeColorHover1);
+
+    // IE 8
+    document.getElementById("changeColor-2").removeEvent("click", changeColor2);
+    document.getElementById("changeColorHover").removeEvent("hover", changeColorHover2);
+    document.getElementById("changeColorHover").removeEvent("mouseout", changeColorHover2);
+  }
+
+  function bindEvents () {
+
+    document.getElementById("changeColor-1").addEventListener("click", changeColor1);
+    document.getElementById("changeColorMouse").addEventListener("mousedown", changeColorHover1);
+    document.getElementById("changeColorMouse").addEventListener("mouseup", changeColorHover1);
+
+    // IE 8
+    document.getElementById("changeColor-2").attachEvent("click", changeColor2);
+    document.getElementById("changeColorHover").attachEvent("hover", changeColorHover2);
+    document.getElementById("changeColorHover").attachEvent("mouseout", changeColorHover2);
+  }
+
+  document.getElementById("bindEvents").addEventListener("click", bindEvents);
+  document.getElementById("unbindEvents").addEventListener("click", unbindEvents);
+  bindEvents();
+</script>
+
+</html>
